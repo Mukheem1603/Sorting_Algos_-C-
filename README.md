@@ -4,6 +4,7 @@
 * Selection sort
 * Quick sort
 * Merge sort
+* Heap sort
 
 ## Bubble Sort:
 In `Bubble sort`, the adjacent elements of the list are compared and swapped accordingly.At the end of the first iteration, the max value in the list reaches either the last position or first position of the list depending upon the swapping of the elements.
@@ -102,3 +103,24 @@ Partition(A,p,r)
                 ELSE A[k] ← R[j]
                         j ← j + 1
 ```
+
+## Heap Sort:
+`Heap Sort` is a comparison-based sorting algorithm. Heapsort can be thought of as an improved selection sort: like that algorithm, it divides its input into a sorted and an unsorted region, and it iteratively shrinks the unsorted region by extracting the largest element and moving that to the sorted region. The improvement consists of the use of a heap data structure rather than a linear-time search to find the maximum.
+#### Pseudocode:
+```procedure heapsort(a, count) is
+    input: an unordered array a of length count
+ 
+    (Build the heap in array a so that largest value is at the root)
+    heapify(a, count)
+
+    (The following loop maintains the invariants that a[0:end] is a heap and every element
+     beyond end is greater than everything before it (so a[end:count] is in sorted order))
+    end ← count - 1
+    while end > 0 do
+        (a[0] is the root and largest value. The swap moves it in front of the sorted elements.)
+        swap(a[end], a[0])
+        (the heap size is reduced by one)
+        end ← end - 1
+        (the swap ruined the heap property, so restore it)
+        siftDown(a, 0, end)
+``` 
