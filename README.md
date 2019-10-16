@@ -5,6 +5,7 @@
 * Quick sort
 * Merge sort
 * Heap sort
+* Radix sort
 
 ## Bubble Sort:
 In `Bubble sort`, the adjacent elements of the list are compared and swapped accordingly.At the end of the first iteration, the max value in the list reaches either the last position or first position of the list depending upon the swapping of the elements.
@@ -124,4 +125,33 @@ Partition(A,p,r)
         end ← end - 1
         (the swap ruined the heap property, so restore it)
         siftDown(a, 0, end)
+```
+## Radix Sort:
+`Radix Sort` is an integer sorting algorithm that sorts data with integer keys by grouping the keys by individual digits that share the same significant position and value(place value).The idea of radix sort is to do digit by digit sort starting from least significant digit.Radix sort uses counting sort as a subroutine to sort.
+### Pseudocode:
+```
+Radix-Sort(A, d)
+//It works same as counting sort for d number of passes.
+//Each key in A[1..n] is a d-digit integer.
+//(Digits are numbered 1 to d from right to left.)
+    for j = 1 to d do
+        //A[]-- Initial Array to Sort
+        int count[10] = {0};
+        //Store the count of "keys" in count[]
+        //key- it is number at digit place j
+        for i = 0 to n do
+         count[key of(A[i]) in pass j]++
+        for k = 1 to 10 do
+         count[k] = count[k] + count[k-1]
+        //Build the resulting array by checking
+        //new position of A[i] from count[k]
+        for i = n-1 downto 0 do
+         result[ count[key of(A[i])] ] = A[j]
+         count[key of(A[i])]--
+        //Now main array A[] contains sorted numbers
+        //according to current digit place
+        for i=0 to n do
+          A[i] = result[i]
+    end for(j)
+end func
 ```
